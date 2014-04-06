@@ -5,17 +5,13 @@ define([
   'bootstrap',
   'peek',
   'views/home/HomeView',
-  'views/projects/ProjectsView',
-  'views/contributors/ContributorsView',
   'views/footer/FooterView',
   'views/grocery/GroceryView'
-], function($, _, Backbone, Bootstrap, Peek, HomeView, ProjectsView, ContributorsView, FooterView, GroceryView) {
+], function($, _, Backbone, Bootstrap, Peek, HomeView, FooterView, GroceryView) {
   
   var AppRouter = Backbone.Router.extend({
     routes: {
       // Define some URL routes
-      'projects': 'showProjects',
-      'users': 'showContributors',
       'grocery': 'showGroceryView',
       
       // Default
@@ -26,23 +22,7 @@ define([
   var initialize = function(){
 
     var app_router = new AppRouter;
-    
 
-
-    app_router.on('route:showProjects', function(){
-   
-        // Call render on the module we loaded in via the dependency array
-        var projectsView = new ProjectsView();
-        projectsView.render();
-
-    });
-
-    app_router.on('route:showContributors', function () {
-    
-        // Like above, call render but know that this view has nested sub views which 
-        // handle loading and displaying data from the GitHub API  
-        var contributorsView = new ContributorsView();
-    });
 
     app_router.on('route:showGroceryView', function(){
    
